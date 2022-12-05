@@ -60,6 +60,7 @@ li {
 
 li p {
   flex: 1;
+  padding: 1rem 0;
 }
 
 li .todo {
