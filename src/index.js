@@ -8,6 +8,8 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   const value = input.value;
   input.value = "";
+  addTodo(value);
+  displayTodo();
 });
 
 const todos = [
@@ -37,6 +39,13 @@ const createTodoElement = (todo, index) => {
     <button>Supprimer</button>
   `;
   return li;
+};
+
+const addTodo = (text) => {
+  todos.push({
+    text,
+    done: false,
+  });
 };
 
 displayTodo();
