@@ -9,7 +9,6 @@ form.addEventListener("submit", (e) => {
   const value = input.value;
   input.value = "";
   addTodo(value);
-  displayTodo();
 });
 
 const todos = [
@@ -36,12 +35,16 @@ const createTodoElement = (todo, index) => {
   const buttonDelete = document.createElement("button");
   buttonDelete.innerHTML = "Supprimer";
   buttonDelete.addEventListener("click", (event) => {
+    event.stopPropagation();
     deleteTodo(index);
   });
   li.innerHTML = `
     <span class="todo ${todo.done ? "done" : ""}"></span>
     <p>${todo.text}</p>
   `;
+  li.addEventListener("click", (e) => {
+    toggleTodo(index);
+  });
   li.appendChild(buttonDelete);
   return li;
 };
@@ -51,10 +54,16 @@ const addTodo = (text) => {
     text,
     done: false,
   });
+  displayTodo();
 };
 
 const deleteTodo = (index) => {
   todos.splice(index, 1);
+  displayTodo();
+};
+
+const toggleTodo = function (index) {
+  todos[index].done = !todos[index].done;
   displayTodo();
 };
 
