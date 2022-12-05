@@ -59,6 +59,11 @@ li {
   align-items: center;
 }
 
+li input {
+  flex: 1;
+  margin-right: 1rem;
+}
+
 li p {
   flex: 1;
   padding: 1rem 0;
